@@ -1,4 +1,4 @@
-!(function($) {
+!(function ($) {
   ("use strict");
 
   // Smooth scroll for the navigation menu and links with .scrollto classes
@@ -47,6 +47,26 @@
       }
     }
   );
+
+  // Show and hide whatsapp-icon
+  $(window).scroll(function () {
+    let icon = $(".whatsapp-icon");
+    let heightFooter = $(".footer-main").height();
+    let heigthHero = $("#hero").height();
+    let documentHeight = $(document).height();
+
+    let scrollTopWindow = $(window).scrollTop();
+    let bottomWindow = $(window).innerHeight() + scrollTopWindow;
+    let documentOutFooter = documentHeight - heightFooter;
+
+    if (
+      // bottomWindow <= heigthHero ||
+       documentOutFooter <= bottomWindow) {
+      icon.hide("fast");
+    } else {
+      icon.show("fast");
+    }
+  });
 
   // Activate smooth scroll on page load with hash links in the url
   $(document).ready(function () {
