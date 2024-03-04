@@ -48,6 +48,32 @@
     }
   );
 
+  // Navigation active state on scroll
+  var nav_sections = $("section");
+  var main_nav = $(".nav-menu, .mobile-nav");
+
+  $(window).on("scroll", function () {
+    var cur_pos = $(this).scrollTop() + 200;
+
+    nav_sections.each(function () {
+      var top = $(this).offset().top,
+        bottom = top + $(this).outerHeight();
+
+      if (cur_pos >= top && cur_pos <= bottom) {
+        if (cur_pos <= bottom) {
+          main_nav.find("li").removeClass("active");
+        }
+        main_nav
+          .find('a[href="#' + $(this).attr("id") + '"]')
+          .parent("li")
+          .addClass("active");
+      }
+      if (cur_pos < 300) {
+        $(".nav-menu ul:first li:first").addClass("active");
+      }
+    });
+  });
+
   // Show and hide whatsapp-icon
   $(window).scroll(function () {
     let icon = $(".whatsapp-icon");
@@ -61,7 +87,8 @@
 
     if (
       // bottomWindow <= heigthHero ||
-       documentOutFooter <= bottomWindow) {
+      documentOutFooter <= bottomWindow
+    ) {
       icon.hide("fast");
     } else {
       icon.show("fast");
@@ -125,6 +152,23 @@
   } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
+
+  //Send whatsapp message form
+  document.getElementById("whatsappButton").addEventListener("click", () => {
+    let number = +5403786410905;
+
+    let name = document.getElementById('clientName').value
+    let textClient = document.getElementById("whatsappText").value
+    const textToSend = name === ''?`Hola, me interesa saber sobre los 
+    servicios que ofrece CHICO Fishing:%0a${textClient}`:
+      `Hola, mi nombre es ${name} me interesa saber sobre los 
+    servicios que ofrece CHICO Fishing:%0a
+    ${textClient}`
+
+    const url = `https://wa.me/${number}?text=${textToSend}`;
+
+    window.open(url, "_blank").focus();
+  });
 
   // Toggle .header-scrolled class to #header when page is scrolled
   $(window).scroll(function () {
