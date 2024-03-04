@@ -10,6 +10,7 @@
   --red-color: #37afe3;
   --red-color-sub: #010f30;
   --white-color: #ffffff;
+  --button-send: #02912d;
 }
 :root {
   --theme-color: #0f6bac;
@@ -43,6 +44,17 @@ h6 {
   font-family: var(--title-font);
 }
 
+.sec-title {
+  padding: 0;
+  font-size: 14px;
+  margin-bottom: 0;
+  line-height: 28px;
+  font-weight: 400;
+  font-family: var(--title-font);
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+}
+
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -65,7 +77,7 @@ section {
   font-weight: 500;
   padding: 0;
   line-height: 1px;
-  margin: 50px 0 5px 0;
+  margin: 35px 0 5px 0;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #aaaaaa;
@@ -827,6 +839,7 @@ section {
 .general-blog .notice a {
   color: black;
   text-decoration: none;
+  text-transform: uppercase;
   font-family: var(--title-font);
 }
 
@@ -935,9 +948,9 @@ section {
 # Footer
 --------------------------------------------------------------*/
 .footer-main {
-  background-image: url("images/ftr-bg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   position: relative;
   padding-top: 95px;
 }
@@ -1484,4 +1497,134 @@ section {
     bottom: 10px;
     z-index: 1;
   }
+}
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+.general-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact .info-box {
+  background-color: var(--white-color);
+  color: #444444;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(214, 215, 216, 0.6);
+  padding: 20px 0 30px 0;
+}
+
+.contact .info-box i {
+  font-size: 32px;
+  color: var(--red-color);
+  border-radius: 50%;
+  padding: 8px;
+  border: 2px dotted #fef5f4;
+}
+
+.contact .info-box h3 {
+  font-size: 20px;
+  color: var(--title-color);
+  margin: 10px 0;
+  font-family: var(--title-font);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.contact .info-box p {
+  padding: 0;
+  font-size: 14px;
+  margin-bottom: 0;
+  line-height: 28px;
+  font-weight: 400;
+  font-family: var(--title-font);
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+}
+
+.contact .php-email-form {
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  padding: 30px;
+  background-color: var(--white-color);
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+  font-size: 14px;
+}
+
+.contact .php-email-form input::focus,
+.contact .php-email-form textarea::focus {
+  background-color: var(--red-color-sub);
+}
+
+.contact .php-email-form input,
+textarea {
+  padding: 20px 15px;
+  font-size: 14px;
+  margin-bottom: 0;
+  line-height: 28px;
+  font-weight: 400;
+  font-family: var(--title-font);
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+  width: 100%;
+}
+
+.contact .php-email-form textarea {
+  padding: 12px 15px;
+}
+
+.contact .php-email-form button {
+  background: var(--red-color);
+  border: 0;
+  border-radius: 50px;
+  transition: 0.4s;
+  font-size: 15px;
+  color: #ffffff;
+  font-family: var(--title-font);
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  outline: none;
+}
+
+.contact .content-button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact .text-center {
+  background: var(--red-color);
+  border: 0;
+  border-radius: 50px;
+  padding: 10px 24px;
+  transition: 0.4s;
+  font-size: 15px;
+  color: #ffffff;
+  font-family: var(--title-font);
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  outline: none;
+}
+
+.contact .php-email-form .text-center:hover button {
+  background: var(--button-send);
+}
+.contact .php-email-form .text-center:hover {
+  background: var(--button-send);
+}
+
+.contact .text-center .fa-whatsapp {
+  font-size: 28px;
+  margin-right: 8px;
+  color: (var(--button-send));
 }
