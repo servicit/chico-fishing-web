@@ -9,7 +9,7 @@
     function (e) {
       if (
         location.pathname.replace(/^\//, "") ==
-          this.pathname.replace(/^\//, "") &&
+        this.pathname.replace(/^\//, "") &&
         location.hostname == this.hostname
       ) {
         var target = $(this.hash);
@@ -153,22 +153,33 @@
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
 
-  //Send whatsapp message form
   document.getElementById("whatsappButton").addEventListener("click", () => {
     let number = +5403786410905;
 
-    let name = document.getElementById('clientName').value
-    let textClient = document.getElementById("whatsappText").value
-    const textToSend = name === ''?`Hola, me interesa saber sobre los 
-    servicios que ofrece CHICO Fishing:%0a${textClient}`:
-      `Hola, mi nombre es ${name} me interesa saber sobre los 
+    let name = document.getElementById("clientName").value;
+    let textClient = document.getElementById("whatsappText").value;
+    const textToSend =
+      name === ""
+        ? `Hola, me interesa saber sobre los 
+    servicios que ofrece CHICO Fishing:%0a${textClient}`
+        : `Hola, mi nombre es ${name} me interesa saber sobre los 
     servicios que ofrece CHICO Fishing:%0a
-    ${textClient}`
+    ${textClient}`;
 
     const url = `https://wa.me/${number}?text=${textToSend}`;
 
     window.open(url, "_blank").focus();
   });
+
+  //Send whatsapp message on package
+
+
+  // document.getElementById("package-1").addEventListener("click", () => {
+
+  //     const url = `https://wa.me/${number}?text=${textToSend}`;
+
+  //   window.open(url, "_blank").focus();
+  // })
 
   // Toggle .header-scrolled class to #header when page is scrolled
   $(window).scroll(function () {
@@ -206,7 +217,6 @@
                 ${entry.fields.title}
               </h2>
               <div class="entry-meta">
-        
               </div>
               <div class="entry-content">
                 <p>
@@ -296,15 +306,15 @@
     .each(function (index) {
       index === 0
         ? heroCarouselIndicators.append(
-            "<li data-target='#heroCarousel' data-slide-to='" +
-              index +
-              "' class='active'></li>"
-          )
+          "<li data-target='#heroCarousel' data-slide-to='" +
+          index +
+          "' class='active'></li>"
+        )
         : heroCarouselIndicators.append(
-            "<li data-target='#heroCarousel' data-slide-to='" +
-              index +
-              "'></li>"
-          );
+          "<li data-target='#heroCarousel' data-slide-to='" +
+          index +
+          "'></li>"
+        );
     });
 
   heroCarousel.on("slid.bs.carousel", function (e) {
