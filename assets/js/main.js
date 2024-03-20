@@ -1,6 +1,30 @@
 !(function ($) {
   ("use strict");
 
+
+  // Real view height for mobile devices
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    $('#hero').css({
+      height: $(window).height()
+    });
+  }
+
+  // Intro carousel
+  var heroCarousel = $("#heroCarousel");
+  var heroCarouselIndicators = $("#hero-carousel-indicators");
+  heroCarousel
+    .find(".carousel-inner")
+    .children(".carousel-item")
+
+  heroCarousel.on("slid.bs.carousel", function (e) {
+    $(this).find("h2").addClass("animate__animated animate__fadeInDown");
+    $(this)
+      .find("p, .btn-get-started")
+      .addClass("animate__animated animate__fadeInUp");
+  });
+
+  console.log('hello world')
+
   // Smooth scroll for the navigation menu and links with .scrollto classes
   var scrolltoOffset = $("#header").outerHeight() - 17;
   $(document).on(
@@ -78,7 +102,6 @@
   $(window).scroll(function () {
     let icon = $(".whatsapp-icon");
     let heightFooter = $(".footer-main").height();
-    let heigthHero = $("#hero").height();
     let documentHeight = $(document).height();
 
     let scrollTopWindow = $(window).scrollTop();
@@ -171,16 +194,6 @@
     window.open(url, "_blank").focus();
   });
 
-  //Send whatsapp message on package
-
-
-  // document.getElementById("package-1").addEventListener("click", () => {
-
-  //     const url = `https://wa.me/${number}?text=${textToSend}`;
-
-  //   window.open(url, "_blank").focus();
-  // })
-
   // Toggle .header-scrolled class to #header when page is scrolled
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {
@@ -194,135 +207,185 @@
     $("#header").addClass("header-scrolled");
   }
 
+
+
+
   //Contentful connect limit 3 items
-  var client = contentful.createClient({
-    space: "rrf8x8ztwkew",
-    accessToken: "URf70KaEdgfgrSf4t6pYgudwg0Gmw-H_wuDIgJexO8A",
+  // var client = contentful.createClient({
+  //   space: "rrf8x8ztwkew",
+  //   accessToken: "URf70KaEdgfgrSf4t6pYgudwg0Gmw-H_wuDIgJexO8A",
+  // });
+  // client
+  //   .getEntries({
+  //     limit: 3,
+  //     content_type: "post",
+  //   })
+  //   .then(function (entries) {
+  //     entries.items.forEach(function (entry) {
+  //       $("#last-news").append(`
+  //         <div class="col-lg-4 col-md-10" >
+  //          <a href="notice.html">
+  //           <article class="entry">
+  //             <div class="entry-img">
+  //               <img src="http:${entry.fields.image.fields.file.url}" class="img-fluid" alt="">
+  //             </div>
+  //             <h2 class="entry-title">
+  //               ${entry.fields.title}
+  //             </h2>
+  //             <div class="entry-meta">
+  //             </div>
+  //             <div class="entry-content">
+  //               <p>
+  //                 ${entry.fields.description}
+  //               </p>
+  //             </div>
+  //           </article>
+  //         </a>
+  //        </div>`);
+  //     });
+  //   });
+
+  // let state = {
+  //   page: 1,
+  //   limit: 3,
+  //   window: 3,
+  // };
+
+  // const loadNews = () => {
+  //   client
+  //     .getEntries({
+  //       content_type: "post",
+  //     })
+  //     .then(function (entries) {
+  //       const limit = state.limit;
+  //       const totalNews = entries.total;
+  //       const pagesQuantity = Math.ceil(totalNews / limit);
+
+  //       client
+  //         .getEntries({
+  //           content_type: "post",
+  //           limit: limit,
+  //           skip: (state.page - 1) * limit,
+  //         })
+  //         .then(function (entries) {
+  //           document.getElementById("news").innerHTML = "";
+  //           entries.items.forEach(function (entry) {
+  //             $("#news").append(`
+  //         <div class="col-lg-4 col-md-10" >
+  //          <a href="notice.html">
+  //           <article class="entry">
+  //             <div class="entry-img">
+  //               <img src="http:${entry.fields.image.fields.file.url}" class="img-fluid" alt="">
+  //             </div>
+  //             <h2 class="entry-title">
+  //               ${entry.fields.title}
+  //             </h2>
+  //             <div class="entry-meta">
+  //               <ul>
+  //                 <li class="d-flex align-items-center"><i class="icofont-user"></i>
+  //                   User
+  //                 </li>
+  //                 <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i>
+  //                   <time datetime="2020-01-01">
+  //                     20/05/2022
+  //                   </time>
+  //                 </li>
+  //               </ul>
+  //             </div>
+  //             <div class="entry-content">
+  //               <p>
+  //                 ${entry.fields.description}
+  //               </p>
+  //             </div>
+  //           </article>
+  //         </a>
+  //        </div>`);
+  //           });
+  //         });
+  //       pageButtons(pagesQuantity);
+  //     });
+  // };
+
+  // loadNews();
+
+  // document.getElementById("down-pages").addEventListener("click", () => {
+  //   --state.page;
+  //   loadNews();
+  // });
+
+
+  // Show and hide whatsapp-icon
+  $(window).scroll(function () {
+    let scrollTop = $(window).scrollTop();
+    if (scrollTop >= 3420) {
+      console.log('Box-service')
+      $("#service-class-id").addClass("service-animation");
+    }else{
+     $("#service-class-id").removeClass("service-animation")
+    }
   });
-  client
-    .getEntries({
-      limit: 3,
-      content_type: "post",
-    })
-    .then(function (entries) {
-      entries.items.forEach(function (entry) {
-        $("#last-news").append(`
-          <div class="col-lg-4 col-md-10" >
-           <a href="notice.html">
-            <article class="entry">
-              <div class="entry-img">
-                <img src="http:${entry.fields.image.fields.file.url}" class="img-fluid" alt="">
-              </div>
-              <h2 class="entry-title">
-                ${entry.fields.title}
-              </h2>
-              <div class="entry-meta">
-              </div>
-              <div class="entry-content">
-                <p>
-                  ${entry.fields.description}
-                </p>
-              </div>
-            </article>
-          </a>
-         </div>`);
+
+ // Porfolio isotope and filter
+  $(window).on('load', function() {
+    var portfolioIsotope = $('.portfolio-container').isotope({
+      itemSelector: '.portfolio-item'
+    });
+
+    $('#portfolio-flters li').on('click', function() {
+      $("#portfolio-flters li").removeClass('filter-active');
+      $(this).addClass('filter-active');
+
+      portfolioIsotope.isotope({
+        filter: $(this).data('filter')
       });
     });
 
-  let state = {
-    page: 1,
-    limit: 3,
-    window: 3,
-  };
-
-  const loadNews = () => {
-    client
-      .getEntries({
-        content_type: "post",
-      })
-      .then(function (entries) {
-        const limit = state.limit;
-        const totalNews = entries.total;
-        const pagesQuantity = Math.ceil(totalNews / limit);
-
-        client
-          .getEntries({
-            content_type: "post",
-            limit: limit,
-            skip: (state.page - 1) * limit,
-          })
-          .then(function (entries) {
-            document.getElementById("news").innerHTML = "";
-            entries.items.forEach(function (entry) {
-              $("#news").append(`
-          <div class="col-lg-4 col-md-10" >
-           <a href="notice.html">
-            <article class="entry">
-              <div class="entry-img">
-                <img src="http:${entry.fields.image.fields.file.url}" class="img-fluid" alt="">
-              </div>
-              <h2 class="entry-title">
-                ${entry.fields.title}
-              </h2>
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i>
-                    User
-                  </li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i>
-                    <time datetime="2020-01-01">
-                      20/05/2022
-                    </time>
-                  </li>
-                </ul>
-              </div>
-              <div class="entry-content">
-                <p>
-                  ${entry.fields.description}
-                </p>
-              </div>
-            </article>
-          </a>
-         </div>`);
-            });
-          });
-        pageButtons(pagesQuantity);
+    // Initiate venobox (lightbox feature used in portofilo)
+    $(document).ready(function() {
+      $('.venobox').venobox({
+        'share': false
       });
-  };
-
-  loadNews();
-
-  document.getElementById("down-pages").addEventListener("click", () => {
-    --state.page;
-    loadNews();
-  });
-
-  // Intro carousel
-  var heroCarousel = $("#heroCarousel");
-  var heroCarouselIndicators = $("#hero-carousel-indicators");
-  heroCarousel
-    .find(".carousel-inner")
-    .children(".carousel-item")
-    .each(function (index) {
-      index === 0
-        ? heroCarouselIndicators.append(
-          "<li data-target='#heroCarousel' data-slide-to='" +
-          index +
-          "' class='active'></li>"
-        )
-        : heroCarouselIndicators.append(
-          "<li data-target='#heroCarousel' data-slide-to='" +
-          index +
-          "'></li>"
-        );
     });
-
-  heroCarousel.on("slid.bs.carousel", function (e) {
-    $(this).find("h2").addClass("animate__animated animate__fadeInDown");
-    $(this)
-      .find("p, .btn-get-started")
-      .addClass("animate__animated animate__fadeInUp");
   });
+
+  // Skills section
+  $('.skills-content').waypoint(function() {
+    $('.progress .progress-bar').each(function() {
+      $(this).css("width", $(this).attr("aria-valuenow") + '%');
+    });
+  }, {
+    offset: '80%'
+  });
+
+  // Portfolio details carousel
+  $(".portfolio-details-carousel").owlCarousel({
+    autoplay: true,
+    dots: true,
+    loop: true,
+    items: 1
+  });
+
+  // ---->>>>>>>  Services-box opening when scrolling
+  // $(window).scroll(function () {
+  //   let scrollTop = $(window).scrollTop();
+  //   let boxes = $('.service_inner-1')
+  //   let initialTime = 1000
+  //   let topScrollLimit = 3420
+  //   if (scrollTop >= topScrollLimit) {
+  //     boxes.each(function (idx) {
+  //       let infoBox = $(this)
+  //       infoBox.show((idx + 1) * initialTime)
+  //     })
+  //   } else {
+  //     boxes.each(function () {
+  //       let infoBox = $(this)
+  //       infoBox.slideUp(initialTime)
+  //       infoBox.data('hide', 'false')
+  //     })
+  //   }
+  // });
+
+
 
   // Back to top button
   $(window).scroll(function () {
