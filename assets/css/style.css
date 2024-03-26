@@ -11,6 +11,7 @@
   --red-color-sub: #050A30;
   --white-color: #ffffff;
   --button-send: #02912d;
+  --yellow: #f2ff00;
 }
 
 :root {
@@ -152,14 +153,13 @@ section {
 #header {
   width: 100%;
   background: white;
-  transition: all 0.5s;
-  padding: 10px 0;
+  transition: all 0.10s;
 }
 
 #header .logo img {
-  padding: 0;
+  padding: 10px 0 10px 0;
   margin: 0;
-  width: 80px;
+  width: 220px;
 }
 
 #header.header-scrolled {
@@ -179,7 +179,7 @@ section {
 
 @media (min-width: 992px) {
   #header .logo img {
-    margin-right: 100px
+    margin-right: 20px
   }
 }
 
@@ -217,7 +217,8 @@ section {
 .nav-menu a:hover,
 .nav-menu .active>a,
 .nav-menu li:hover>a {
-  color: var(--red-color);
+  text-shadow: 0px 0px 8px var(--yellow);
+
 }
 
 .nav-menu .drop-down ul {
@@ -261,6 +262,7 @@ section {
   color: var(--red-color);
   font-family: var(--title-font);
   text-transform: uppercase;
+  text-shadow: 0px 0px 10px var(--yellow);
 }
 
 .nav-menu .drop-down>a:after {
@@ -480,6 +482,7 @@ section {
 
 .title-hero span {
   color: var(--red-color);
+  text-shadow: 0px 0px 10px var(--red-color-sub);
 }
 
 #hero .carousel-inner .carousel-item {
@@ -731,6 +734,8 @@ section {
 
 .about .content p {
   margin-bottom: 30px;
+  transition: 0.6s;
+
 }
 
 .about .container-image {
@@ -780,7 +785,30 @@ section {
   z-index: 991;
   background-color: var(--red-color);
   border-radius: 10px;
+  transition: 0.5s;
 }
+
+.box-text:hover .img-up {
+  transform: scale(1.1);
+
+}
+
+.box-text-2:hover .img-down {
+  transform: scale(1.1);
+
+}
+
+.box-text:hover {
+  box-shadow: 0px 0px 10px 5px var(--yellow);
+  transition: 1000ms;
+}
+
+
+.box-text-2:hover {
+  box-shadow: 0px 0px 10px 5px var(--yellow);
+  transition: 1000ms;
+}
+
 
 @media (min-width: 1700px) {
   .box-text {
@@ -796,21 +824,25 @@ section {
   z-index: 991;
   background-color: var(--red-color);
   border-radius: 10px;
+  transition: 0.5s;
 }
 
 .title {
   font-family: var(--title-font);
   text-align: center;
   font-size: 34px;
-  color: #ffffff;
+  color: var(--white-color);
+  transition: 0.5s;
+
 }
 
 .box-text,
 .box-text-2 p {
   font-size: 20px;
   text-align: center;
-  color: #ffffff;
+  color: var(--white-color);
   font-family: var(--title-font);
+  transition: 0.6s;
 }
 
 @media (max-width: 992px) {
@@ -835,6 +867,7 @@ section {
     width: 287px;
     height: 300px;
   }
+
   .about .img-down {
     width: 287px;
     height: 300px;
@@ -986,7 +1019,7 @@ section {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(216, 216, 216, 0.92);
+  background-color: rgb(10, 15, 36);
   display: inline-block;
 }
 
@@ -999,13 +1032,12 @@ section {
 
 .general-footer .img-footer {
   width: 100%;
-
+  margin-bottom: 20px;
 }
 
 .general-footer .img-footer img {
   width: 150px;
 }
-
 
 .ftr-widget,
 .ftr-widget p a {
@@ -1013,7 +1045,7 @@ section {
 }
 
 .ftr-widget .widget-title {
-  color: var(--red-color-sub);
+  color: var(--white-color);
   font-weight: 500;
   font-size: 17px;
   letter-spacing: 1.7px;
@@ -1026,17 +1058,7 @@ section {
 .ftr-widget p span {
   font-family: var(--title-font);
   display: block;
-  color: var(--red-color-sub);
-}
-
-.ftr-widget .widget-title i {
-  height: 30px;
-  font-size: 26px;
-  display: inline-block;
-}
-
-.ftr-widget .widget-title img {
-  color: #02912d;
+  color: var(--white-color);
 }
 
 .ftr-widget .widget-title span {
@@ -1083,7 +1105,7 @@ section {
 }
 
 .footer-bottom .copyright p {
-  color: var(--red-color-sub);
+  color: var(--white-color);
   font-size: 15px;
   padding-left: 10px;
 }
@@ -1109,11 +1131,11 @@ section {
   text-align: center;
   background-color: #393939;
   line-height: 35px;
-  color: #909090;
+  color: var(--white-color);
 }
 
 .footer-bottom ul li a:hover {
-  color: #393939;
+  color: var(--white-color);
   background-color: #909090;
 }
 
@@ -1340,6 +1362,12 @@ section {
   right: 20px;
   bottom: 30px;
   z-index: 1;
+  transition: 1s;
+  background: transparent;
+}
+
+.whatsapp-icon:hover {
+  scale: 1.5;
 }
 
 @media (max-width: 1024px) {
@@ -1560,12 +1588,12 @@ textarea {
 }
 
 .contact .php-email-form button {
-  background: var(--red-color);
   border: 0;
   border-radius: 50px;
   transition: 0.4s;
   font-size: 15px;
   color: #ffffff;
+  font-weight: 500;
   font-family: var(--title-font);
   text-transform: uppercase;
   display: flex;
@@ -1573,6 +1601,8 @@ textarea {
   justify-content: center;
   align-content: center;
   outline: none;
+  background-color: transparent;
+
 }
 
 .contact .content-button {
@@ -1598,18 +1628,25 @@ textarea {
   outline: none;
 }
 
-.contact .php-email-form .text-center:hover button {
-  background: var(--button-send);
+.contact .php-email-form .text-center:hover .button-wp,
+.fa-whatsapp {
+  color: var(--red-color-sub)
 }
 
 .contact .php-email-form .text-center:hover {
-  background: var(--button-send);
+  background: var(--yellow);
+}
+
+.contact .php-email-form .text-center:hover {
+
+  color: (var(--red-color-sub));
+
 }
 
 .contact .text-center .fa-whatsapp {
   font-size: 28px;
   margin-right: 8px;
-  color: (var(--button-send));
+  color: (var(--red-color-sub));
 }
 
 /*--------------------------------------------------------------
@@ -1728,7 +1765,7 @@ textarea {
 }
 
 .pricing .packages:hover .bx-check {
-  color: var(--button-send);
+  color: var(--yellow);
 }
 
 .pricing .packages .buy-btn {
@@ -1736,11 +1773,16 @@ textarea {
 }
 
 .pricing .buy-btn:hover {
-  background: var(--button-send);
+  background: var(--yellow);
 }
 
 .pricing .packages:hover .buy-btn {
-  background: var(--button-send);
+  color: var(--yellow);
+  background-color: var(--yellow);
+}
+
+.pricing .packages:hover .buy-btn {
+  color: var(--red-color-sub)
 }
 
 @media (max-width: 992px) {
