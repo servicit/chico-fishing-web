@@ -37,6 +37,10 @@ a:hover {
   text-decoration: none;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -45,7 +49,6 @@ h5,
 h6 {
   font-family: var(--title-font);
 }
-
 
 .sec-title {
   -webkit-animation-delay: 0.4s;
@@ -61,6 +64,12 @@ h6 {
 @media (max-width: 768px) {
   .sec-title {
     font-size: 18px;
+  }
+}
+
+@media (max-width: 300px) {
+  .sec-title {
+    font-size: 15px;
   }
 }
 
@@ -154,12 +163,13 @@ section {
   width: 100%;
   background: white;
   transition: all 0.10s;
+  padding: 12px 0;
 }
 
 #header .logo img {
   padding: 10px 0 10px 0;
   margin: 0;
-  width: 220px;
+  width: 195px;
 }
 
 #header.header-scrolled {
@@ -171,15 +181,152 @@ section {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
+.general-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  align-items: center;
+
+}
+
+@media (max-width: 1100px) {
+  #header .logo img {
+    width: 160px;
+  }
+}
+
 @media (max-width: 992px) {
   #header {
     padding: 0px;
   }
+
+  #header .logo img {
+    width: 170px;
+  }
+
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1040px) {
   #header .logo img {
     margin-right: 20px
+  }
+}
+
+@media (max-width: 1040) {
+  .general-header {
+    justify-content: start;
+  }
+}
+
+@media (max-width: 400px) {
+  #header .logo img {
+    width: 140px;
+    margin-bottom: 20px;
+  }
+}
+
+.lang-menu {
+  position: fixed;
+  top: 35px;
+  left: 30px;
+}
+
+.selected-lang {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  line-height: 2;
+}
+
+.selected-lang h7 {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: var(--title-font);
+  margin-left: 5px;
+}
+
+.selected-lang i {
+  margin-left: 5px;
+}
+
+.selected-lang::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.lang-menu .flag-es::before {
+  background-image: url('https://flagsapi.com/AR/flat/32.png')
+}
+
+.lang-menu .flag-pr::before {
+  background-image: url('https://flagsapi.com/BR/flat/32.png')
+}
+
+.lang-menu ul {
+  margin: 0;
+  padding: 0;
+  background-color: var(--white-color);
+  border: 1px solid #f8f8f8;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+
+}
+
+.lang-menu:hover ul {
+  display: block;
+}
+
+.lang-menu ul li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lang-menu ul li a {
+  width: 145px;
+  display: block;
+  padding: 5px 10px;
+  color: var(--red-color-sub);
+  /* text-transform: uppercase;
+  font-family: var(--title-font); */
+}
+
+.lang-menu ul li a::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-right: 6px;
+  color: var(--red-color-sub);
+}
+
+.lang-menu ul li a {
+  color: var(--red-color-sub);
+}
+
+.lang-menu ul li a:hover {
+  background-color: #f2f2f2;
+  color: var(--red-color-sub);
+}
+
+.es:before {
+  background-image: url('https://flagsapi.com/AR/flat/32.png')
+}
+
+.pt:before {
+  background-image: url('https://flagsapi.com/BR/flat/32.png')
+}
+
+@media (max-width: 400px) {
+  .selected-lang h7 {
+    display: none;
   }
 }
 
@@ -308,8 +455,8 @@ section {
 /* Mobile Navigation */
 .mobile-nav-toggle {
   position: fixed;
-  right: 15px;
-  top: 15px;
+  right: 8px;
+  top: 27px;
   z-index: 9998;
   border: 0;
   background: none;
@@ -580,9 +727,27 @@ section {
   }
 }
 
-@media (max-height: 500px) {
+@media (max-width: 500px) {
   #hero {
     height: 120vh;
+  }
+
+  .title-hero {
+    font-size: 28px;
+  }
+
+  .title-hero span {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 300px) {
+  .title-hero {
+    font-size: 25px;
+  }
+
+  .title-hero span {
+    font-size: 22px;
   }
 }
 
@@ -692,6 +857,10 @@ section {
   letter-spacing: normal;
   font-family: var(--title-font);
   margin-bottom: 10px;
+}
+
+.sec-subtitle:hover {
+  color: var(--red-color);
 }
 
 .about .general .content span {
@@ -828,6 +997,10 @@ section {
 
 }
 
+.about .text-about-us:hover {
+  color: var(--red-color-sub);
+}
+
 .box-text,
 .box-text-2 p {
   font-size: 20px;
@@ -865,9 +1038,18 @@ section {
     height: 400px;
   }
 
+  .about .content h3 {
+    font-size: 40px;
+  }
+
 }
 
 @media (max-width: 575px) {
+  .about .general .content span {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
   .about .img-up {
     width: 287px;
     height: 300px;
@@ -876,6 +1058,32 @@ section {
   .about .img-down {
     width: 287px;
     height: 300px;
+  }
+
+  .about .content h3 {
+    font-size: 30px;
+    line-height: normal;
+  }
+}
+
+@media (max-width: 400px) {
+  .title {
+    font-size: 15px;
+  }
+
+  .about .content p {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .about .img-up {
+    width: 217px;
+    height: 230px;
+  }
+
+  .about .img-down {
+    width: 217px;
+    height: 230px;
   }
 }
 
@@ -1014,9 +1222,11 @@ section {
   align-content: center;
   position: relative;
   padding-top: 95px;
+  background-color: rgb(10, 15, 36);
+
 }
 
-.footer-main::before {
+/* .footer-main::before {
   content: "";
   position: absolute;
   left: 0;
@@ -1025,7 +1235,7 @@ section {
   bottom: 0;
   background-color: rgb(10, 15, 36);
   display: inline-block;
-}
+} */
 
 .general-footer {
   display: flex;
@@ -1040,7 +1250,7 @@ section {
 }
 
 .general-footer .img-footer img {
-  width: 150px;
+  width: 140px;
 }
 
 .ftr-widget,
@@ -1103,11 +1313,6 @@ section {
   margin-bottom: 0;
 }
 
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 34px 0;
-}
-
 .footer-bottom .copyright p {
   color: var(--white-color);
   font-size: 15px;
@@ -1151,15 +1356,22 @@ section {
     justify-content: center;
     align-items: center;
   }
-  .widget-title{
+
+  .widget-title {
     text-align: center;
   }
-  .img-footer{
+
+  .img-footer {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .footer-bottom .copyright p {
+    font-size: 12px;
+    text-align: center;
   }
 }
 
@@ -1227,14 +1439,15 @@ section {
   background-position: center;
 }
 
+
 .service_style3 .service_img:before {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgb(16, 26, 42));
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
   right: 0;
   top: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgb(16, 26, 42));
   opacity: 0;
   visibility: visible;
   transition: all ease 0.4s;
@@ -1270,7 +1483,7 @@ p:hover {
 
 .service_style3 .service_text {
   color: #f9f7e6;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 24px;
   max-width: 390px;
   margin: 0 auto 24px auto;
@@ -1338,9 +1551,8 @@ p:hover {
 @media (max-width: 991px) {
   .service_style3 {
     flex-direction: column;
-    min-height: 700px;
+    min-height: 900px;
   }
-
 
   .service_style3 .service_inner-1:hover {
     flex: 3.2;
@@ -1350,34 +1562,57 @@ p:hover {
     min-height: auto;
   }
 
-  .service_style3 .service_img:before {
-    background-image: none;
-    background-color: var(--title-color);
+  .service-img-1:hover {
+    position: relative;
+    display: block;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(16, 26, 42)), url("../img/gallery/5.jpeg");
   }
 
-  .service .slick-slide:nth-child(odd) {
-    margin-top: 0px;
+  .service-img-3:hover {
+    position: relative;
+    display: block;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(16, 26, 42)), url("../img/gallery/30.jpg");
   }
 
-  .service-style2 .service-icon {
-    margin: -70px auto 18px auto;
+  .service-img-4:hover {
+    position: relative;
+    display: block;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(16, 26, 42)), url("../img/gallery/4.jpeg");
+  }
+
+  .service-img-5:hover {
+    position: relative;
+    display: block;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(16, 26, 42)), url("../img/gallery/25.jpeg");
   }
 }
 
 /* Small devices */
 @media (max-width: 767px) {
-  .service-style2 {
-    height: 390px;
-  }
-
-  .service-style2:hover {
-    max-height: 390px;
+  .service_style3 .service_text {
+    font-size: 16px;
   }
 }
 
 @media screen and (max-width: 374px) {
-  .service-style2 {
-    height: 330px;
+  .service_style3 .service_text {
+    font-size: 14px;
   }
 }
 
@@ -1656,23 +1891,21 @@ textarea {
 
 .contact .php-email-form .text-center:hover .button-wp,
 .fa-whatsapp {
-  color: var(--red-color-sub)
+  color: var(--white-color)
 }
 
 .contact .php-email-form .text-center:hover {
-  background: var(--yellow);
+  background: var(--theme-color);
 }
 
 .contact .php-email-form .text-center:hover {
-
   color: (var(--red-color-sub));
-
 }
 
 .contact .text-center .fa-whatsapp {
   font-size: 28px;
   margin-right: 8px;
-  color: (var(--red-color-sub));
+  color: var(--white-color)
 }
 
 /*--------------------------------------------------------------
